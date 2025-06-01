@@ -481,61 +481,47 @@ func pengurutanStartup(x *int) {
 		if methods == "Descending" || methods == "descending" || methods == "1" {
 			fmt.Print("Masukkan berapa jumlah Startup yang ingin diurutkan: ")
 			fmt.Scan(&idx)
-			if idx >= 1 && idx < jumStartup && idx != 0 {
+			if idx >= 1 && idx <= jumStartup {
 				i1 := 0
 				for i1 < idx-1 {
 					idx_min = i1
 					j := i1 + 1
-
 					for j < idx {
 						if A[j].namaStrtup > A[idx_min].namaStrtup {
 							idx_min = j
 						}
-						j = j + 1
+						j++
 					}
-
-					a := A[i1]
-					A[i1] = A[idx_min]
-					A[idx_min] = a
-
-					i1 = i1 + 1
+					A[i1], A[idx_min] = A[idx_min], A[i1]
+					i1++
 				}
 				fmt.Println("Startup berhasil diurutkan dengan Selection Sort berdasarkan nama.")
 				tampilkanStartup()
 			} else {
 				fmt.Println("Data diluar jangkauan!")
 			}
-
 		} else if methods == "Ascending" || methods == "ascending" || methods == "2" {
 			fmt.Print("Masukkan berapa jumlah Startup yang ingin diurutkan: ")
 			fmt.Scan(&idx)
-			if idx >= 1 && idx < jumStartup && idx != 0 {
+			if idx >= 1 && idx <= jumStartup {
 				i1 := 0
 				for i1 < idx-1 {
 					idx_min = i1
 					j := i1 + 1
-
 					for j < idx {
 						if A[j].namaStrtup < A[idx_min].namaStrtup {
 							idx_min = j
 						}
-						j = j + 1
+						j++
 					}
-
-					// tukar posisi
-					a := A[i1]
-					A[i1] = A[idx_min]
-					A[idx_min] = a
-
-					i1 = i1 + 1
-
+					A[i1], A[idx_min] = A[idx_min], A[i1]
+					i1++
 				}
 				fmt.Println("Startup berhasil diurutkan dengan Selection Sort berdasarkan nama.")
 				tampilkanStartup()
 			} else {
 				fmt.Println("Data diluar jangkauan!")
 			}
-
 		}
 	case 2:
 		fmt.Println("1. Descending")
@@ -545,47 +531,44 @@ func pengurutanStartup(x *int) {
 		if methods == "Descending" || methods == "descending" || methods == "1" {
 			fmt.Print("Masukkan berapa jumlah Startup yang ingin diurutkan: ")
 			fmt.Scan(&idx)
-			if idx >= 1 && idx < jumStartup && idx != 0 {
+			if idx >= 1 && idx <= jumStartup {
 				i2 := 1
 				for i2 <= idx-1 {
 					j2 := i2
 					temp := A[j2]
 					for j2 > 0 && temp.namaStrtup > A[j2-1].namaStrtup {
 						A[j2] = A[j2-1]
-						j2 = j2 - 1
+						j2--
 					}
 					A[j2] = temp
-					i2 = i2 + 1
-
-					fmt.Println("Startup berhasil diurutkan dengan Selection Sort berdasarkan nama.")
-					tampilkanStartup()
+					i2++
 				}
+				fmt.Println("Startup berhasil diurutkan dengan Insertion Sort berdasarkan nama.")
+				tampilkanStartup()
 			} else {
 				fmt.Println("Data diluar jangkauan!")
 			}
 		} else if methods == "Ascending" || methods == "ascending" || methods == "2" {
 			fmt.Print("Masukkan berapa jumlah Startup yang ingin diurutkan: ")
 			fmt.Scan(&idx)
-			if idx >= 1 && idx < jumStartup && idx != 0 {
+			if idx >= 1 && idx <= jumStartup {
 				i2 := 1
 				for i2 <= idx-1 {
 					j2 := i2
 					temp := A[j2]
 					for j2 > 0 && temp.namaStrtup < A[j2-1].namaStrtup {
 						A[j2] = A[j2-1]
-						j2 = j2 - 1
+						j2--
 					}
 					A[j2] = temp
-					i2 = i2 + 1
-
-					fmt.Println("Startup berhasil diurutkan dengan Selection Sort berdasarkan nama.")
-					tampilkanStartup()
+					i2++
 				}
+				fmt.Println("Startup berhasil diurutkan dengan Insertion Sort berdasarkan nama.")
+				tampilkanStartup()
 			} else {
 				fmt.Println("Data diluar jangkauan!")
 			}
 		}
-
 	}
 }
 
